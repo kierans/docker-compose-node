@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  dev:
+    image: node:12-alpine3.12
+
+    environment:
+      # Increases the heap size for ts-node
+      NODE_OPTIONS: "--max_old_space_size=2048"
+
+    volumes:
+      - "$PWD:$PWD"
+
+    working_dir: $PWD
+
+    command: node index.js
+
+  release:
+    image: doesnotexist
